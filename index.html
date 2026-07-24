@@ -17,20 +17,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* Cambio para que el contenido fluya desde arriba */
             background: #0b0e14;
             background-image: radial-gradient(circle at 20% 30%, #14212b 0%, #030507 100%);
-            padding: 1.5rem;
+            padding: 1.5rem 1.5rem 2rem;
             gap: 2rem;
-            position: relative; /* para posicionar el contador absoluto */
         }
 
-        /* --- CONTADOR FIJO EN ESQUINA SUPERIOR IZQUIERDA --- */
-        .contador-top-left {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            z-index: 999;
+        /* --- CONTADOR AL FINAL, ESTÁTICO Y CENTRADO --- */
+        .contador-footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .contador-footer .contador-box {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(4px);
             padding: 0.4rem 0.9rem;
@@ -42,27 +43,17 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
-            pointer-events: auto; /* para que se pueda interactuar si tiene enlaces */
         }
-        .contador-top-left a {
+        .contador-footer .contador-box a {
             color: #8fcbff;
             text-decoration: none;
             font-size: 0.7rem;
             margin-left: 0.2rem;
             opacity: 0.8;
         }
-        .contador-top-left a:hover {
+        .contador-footer .contador-box a:hover {
             opacity: 1;
             text-decoration: underline;
-        }
-        /* Ajuste para móviles */
-        @media (max-width: 600px) {
-            .contador-top-left {
-                top: 0.6rem;
-                left: 0.6rem;
-                padding: 0.2rem 0.7rem;
-                font-size: 0.75rem;
-            }
         }
 
         h1 {
@@ -113,7 +104,7 @@
             box-shadow: 0 4px 0 #02101d, 0 10px 20px rgba(0, 20, 50, 0.8);
         }
 
-        /* --- CARRUSEL: SOLO IMÁGENES CUADRADAS, AUTO, SIN PUNTOS NI BOTONES --- */
+        /* --- CARRUSEL --- */
         .carousel-container {
             width: 100%;
             max-width: 600px;
@@ -152,6 +143,26 @@
             background: #0a1a2b;
         }
 
+        /* --- TEXTO DE INFORMACIÓN --- */
+        .info-text {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            color: #d4e9ff;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            padding: 0 0.5rem;
+        }
+        .info-text h2 {
+            color: #8fcbff;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.5rem;
@@ -167,16 +178,20 @@
                 max-width: 100%;
                 aspect-ratio: 1 / 1;
             }
+            .info-text {
+                font-size: 0.95rem;
+            }
+            .info-text h2 {
+                font-size: 1.4rem;
+            }
+            .contador-footer .contador-box {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.7rem;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- CONTADOR EN ESQUINA SUPERIOR IZQUIERDA (con el código que proporcionaste) -->
-    <div class="contador-top-left">
-        <script type="text/javascript" src="https://www.counters-free.net/count/k01e"></script><br>
- <a href='https://www.versicherungen.at/hausversicherung-rechner/'>Haus versichern</a> <script type='text/javascript' src='https://whomania.com/ctr?id=1a5a2d719200534f6ddbbc08a381abe33c25a8a1'></script>
-    </div>
 
     <h1>Kerim Music+</h1>
 
@@ -191,6 +206,21 @@
     <!-- CARRUSEL -->
     <div class="carousel-container" id="carousel">
         <div class="carousel-track" id="track"></div>
+    </div>
+
+    <!-- TEXTO DE INFORMACIÓN -->
+    <div class="info-text">
+        <h2>INFORMACIÓN</h2>
+        <p>Kerim Music+ es una aplicación de catálogo musical del estudio Kerim Music, diseñada para que disfrutes de tu música de forma fácil y rápida. Puedes escuchar todas las canciones mediante una conexión a Internet, ya sea utilizando datos móviles o una red Wi-Fi, con una experiencia de reproducción fluida y de alta calidad.</p>
+    </div>
+
+    <!-- CONTADOR AL FINAL, ESTÁTICO Y CENTRADO -->
+    <div class="contador-footer">
+        <div class="contador-box">
+            <script type="text/javascript" src="https://www.counters-free.net/count/k01e"></script><br>
+            <a href='https://www.versicherungen.at/hausversicherung-rechner/'>Haus versichern</a>
+            <script type='text/javascript' src='https://whomania.com/ctr?id=1a5a2d719200534f6ddbbc08a381abe33c25a8a1'></script>
+        </div>
     </div>
 
     <script>
