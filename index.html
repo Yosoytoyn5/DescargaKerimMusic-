@@ -22,6 +22,47 @@
             background-image: radial-gradient(circle at 20% 30%, #14212b 0%, #030507 100%);
             padding: 1.5rem;
             gap: 2rem;
+            position: relative; /* para posicionar el contador absoluto */
+        }
+
+        /* --- CONTADOR FIJO EN ESQUINA SUPERIOR IZQUIERDA --- */
+        .contador-top-left {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 0.9rem;
+            border-radius: 40px;
+            border: 1px solid #1f4a6e;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            font-size: 0.9rem;
+            color: #d4e9ff;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            pointer-events: auto; /* para que se pueda interactuar si tiene enlaces */
+        }
+        .contador-top-left a {
+            color: #8fcbff;
+            text-decoration: none;
+            font-size: 0.7rem;
+            margin-left: 0.2rem;
+            opacity: 0.8;
+        }
+        .contador-top-left a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+        /* Ajuste para móviles */
+        @media (max-width: 600px) {
+            .contador-top-left {
+                top: 0.6rem;
+                left: 0.6rem;
+                padding: 0.2rem 0.7rem;
+                font-size: 0.75rem;
+            }
         }
 
         h1 {
@@ -76,7 +117,7 @@
         .carousel-container {
             width: 100%;
             max-width: 600px;
-            aspect-ratio: 1 / 1; /* Hace el contenedor cuadrado */
+            aspect-ratio: 1 / 1;
             overflow: hidden;
             border-radius: 1.5rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
@@ -92,7 +133,6 @@
             height: 100%;
         }
 
-        /* Cada slide ocupa todo el espacio cuadrado */
         .carousel-slide {
             min-width: 100%;
             flex-shrink: 0;
@@ -104,7 +144,6 @@
             height: 100%;
         }
 
-        /* La imagen se ajusta para llenar el cuadrado perfectamente */
         .carousel-slide img {
             width: 100%;
             height: 100%;
@@ -113,7 +152,6 @@
             background: #0a1a2b;
         }
 
-        /* Responsive: en móviles se mantiene cuadrado */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2.5rem;
@@ -134,6 +172,12 @@
 </head>
 <body>
 
+    <!-- CONTADOR EN ESQUINA SUPERIOR IZQUIERDA (con el código que proporcionaste) -->
+    <div class="contador-top-left">
+        <script type="text/javascript" src="https://www.counters-free.net/count/k01e"></script><br>
+ <a href='https://www.versicherungen.at/hausversicherung-rechner/'>Haus versichern</a> <script type='text/javascript' src='https://whomania.com/ctr?id=1a5a2d719200534f6ddbbc08a381abe33c25a8a1'></script>
+    </div>
+
     <h1>Kerim Music+</h1>
 
     <a href="https://apk.e-droid.net/apk/app3346530-epq9vc.apk?v=29" 
@@ -144,14 +188,13 @@
         Descargar
     </a>
 
-    <!-- CARRUSEL: SOLO IMÁGENES, SIN PUNTOS NI BOTONES -->
+    <!-- CARRUSEL -->
     <div class="carousel-container" id="carousel">
         <div class="carousel-track" id="track"></div>
     </div>
 
     <script>
         (function() {
-            // Lista de imágenes
             const data = [
                 { id: 69, url: 'https://www.dropbox.com/scl/fi/10taifx84l0e4h2y9l2nx/Te-estra-o-tanto.png?rlkey=kp4gp2kp8rhbzsdobyl5tfng6&st=vrnzzymz&raw=1' },
                 { id: 68, url: 'https://www.dropbox.com/scl/fi/7pxyk1hvrgtdl9fy94alm/J-Vazqeuz-Album-2022.jpg?rlkey=sfb91d32144hgoijxhf0eqbhz&st=rjtryg7u&raw=1' },
@@ -189,7 +232,6 @@
             let currentIndex = 0;
             const totalSlides = data.length;
 
-            // Construir slides: solo imágenes
             data.forEach(item => {
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
@@ -214,17 +256,14 @@
                 goToSlide(currentIndex + 1);
             }
 
-            // Auto-play cada 4 segundos
             let autoPlay = setInterval(nextSlide, 4000);
 
-            // Pausar al pasar el mouse y reanudar al salir
             const container = document.getElementById('carousel');
             container.addEventListener('mouseenter', () => clearInterval(autoPlay));
             container.addEventListener('mouseleave', () => {
                 autoPlay = setInterval(nextSlide, 4000);
             });
 
-            // Inicializar
             goToSlide(0);
         })();
     </script>
